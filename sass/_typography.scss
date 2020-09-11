@@ -1,0 +1,62 @@
+%heading { //placeholder then it can be use by @extend in all the headings 1 to 4
+    font-family: $font-display;
+    font-weight: 400;
+}
+
+
+//All of these selector are going to copy the properties defined in %heading. Unlike mixin paste the properties in all the selectores.
+.heading-1 {
+    @extend %heading; //extending the properties defined in %heading
+    font-size: 4.5rem;
+    color: $color-grey-light-1;
+    line-height: 1;  
+}
+
+.heading-2 {
+    @extend %heading;
+    font-size: 4rem;
+    font-style: italic; //italic because we added from google font 
+    line-height: 1;    
+
+    &--light { color: $color-grey-light-1; }
+    &--dark { color: $color-grey-dark-1; }
+}
+
+.heading-3 {
+    @extend %heading;
+    font-size: 1.6rem;
+    color: $color-primary;
+    text-transform: uppercase;    
+}
+
+.heading-4 {
+    @extend %heading;
+    font-size: 1.9rem;
+
+    &--light { color: $color-grey-light-1; }
+    &--dark { color: $color-grey-dark-1; }
+}
+
+.btn {
+    background-color: $color-primary;
+    color: #fff;
+    border: none;
+    border-radius: 0;  //by default it has some border and we don't want that in this case
+    font-family: $font-display;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    padding: 1.8rem 3rem;
+    cursor: pointer;
+    transition: all .2s;
+
+    &:hover {
+        background-color: $color-primary-dark;
+    }    
+}
+
+//MARGIN BOTTOM SIZE - HELPER CLASS
+
+.mb-sm { margin-bottom: 2rem; }
+.mb-md { margin-bottom: 3rem; }
+.mb-lg { margin-bottom: 4rem; }
+.mb-hg { margin-bottom: 8rem; }

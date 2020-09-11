@@ -1,0 +1,54 @@
+.features {    
+    grid-column: center-start / center-end;
+
+    margin: 15rem 0;
+    
+    /*
+    display: grid; //it means this feature element is now a grid container
+    //grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr)); //TO MAKE THE SECTION RESPONSIVE WITHOUT MEDIA QUERIES.
+    grid-gap: 6rem; 
+    align-items: start; // to align the items of each child grid to start (to the top) because by default is stretch, so that make more space between h4 and the paragraph in some grid container  
+    */
+
+    //FOR THIS SECTION IN CASE OLDER BROWSER DON'T SUPPORT CSS GRID
+    @supports(display: grid) {
+        display: grid; //it means this feature element is now a grid container
+        //grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr)); //TO MAKE THE SECTION RESPONSIVE WITHOUT MEDIA QUERIES.
+        grid-gap: 6rem; 
+        align-items: start; // to align the items of each child grid to start (to the top) because by default is stretch, so that make more space between h4 and the paragraph in some grid container
+    }
+}
+
+.feature { //this element is reusable. It doesn't depend of the container ".feature"
+    
+    float: left;
+    width: 33.3333%; // 1/3 = 33.3333%
+    margin-bottom: 6rem;
+    
+    //FOR THIS SECTION IN CASE OLDER BROWSER DON'T SUPPORT CSS GRID
+    @supports(display: grid) { // because feature is a grid item the grid property ovewrite the float
+        width: auto;
+        margin-bottom: 0;
+    }
+
+    
+    
+    display: grid;
+    grid-template-columns: min-content 1fr; //first "min-content" becuase if we eventually change the width of the icon min-content automatically adjust the width of the first column
+    grid-row-gap: 1.5rem; //to get some space between rows
+    grid-column-gap: 2.5rem; //to get some space between columns
+
+    &__icon {
+        fill: $color-primary;
+        width: 4.5rem;
+        height: 4.5rem;
+        grid-row: 1 / span 2; //we don't use -1 to go all the way until the end becuase it is for explicit grids and the additional grid row is explicit. we dont defined any grid row.
+        transform: translateY(-1rem);
+    }
+
+    &__text {
+        font-size: 1.7rem;
+    }
+}
